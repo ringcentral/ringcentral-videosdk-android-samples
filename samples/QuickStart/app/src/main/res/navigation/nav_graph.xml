@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/joinFragment">
+
+    <fragment
+        android:id="@+id/joinFragment"
+        android:name="com.ringcentral.video.quickstart.ui.join.JoinFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_join" >
+        <action
+            android:id="@+id/action_mainFragment_to_waitingRoomFragment"
+            app:destination="@id/waitingRoomFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_activeMeetingFragment"
+            app:destination="@id/activeMeetingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/waitingRoomFragment"
+        android:name="com.ringcentral.video.quickstart.ui.waitingroom.WaitingRoomFragment"
+        android:label="waiting_room_fragment"
+        tools:layout="@layout/fragment_waiting_room" >
+        <action
+            android:id="@+id/action_waitingRoomFragment_to_activeMeetingFragment"
+            app:destination="@id/activeMeetingFragment" />
+        <action
+            android:id="@+id/action_waitingRoomFragment_to_mainFragment"
+            app:destination="@id/joinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/activeMeetingFragment"
+        android:name="com.ringcentral.video.quickstart.ui.active.ActiveMeetingFragment"
+        android:label="fragment_active_meeting"
+        tools:layout="@layout/fragment_active_meeting" />
+    <action
+        android:id="@+id/action_ActiveMeetingFragment_to_mainFragment"
+        app:destination="@id/joinFragment" />
+    <action
+        android:id="@+id/action_ActiveMeetingFragment_to_waitingRoomFragment"
+        app:destination="@id/waitingRoomFragment" />
+</navigation>
