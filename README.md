@@ -54,7 +54,6 @@ To start using the Android programmable video client SDK in your applications, y
         repositories {
             google()
             mavenCentral()
-            maven { url 'https://s01.oss.sonatype.org/content/repositories/releases' }
         }
     }
     ```
