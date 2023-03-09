@@ -71,7 +71,6 @@ To start using the Android programmable video client SDK in your applications, y
 3. Add the following lines under **dependencies** of your app **build.gradle** file.
 
     ```gradle
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.20"
     implementation 'com.pubnub:pubnub-gson:4.29.2'
     implementation 'com.ringcentral.video:ringcentral-video-sdk:version'
     ```

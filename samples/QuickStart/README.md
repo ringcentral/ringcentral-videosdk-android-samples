@@ -57,9 +57,9 @@ The following steps show you how to prepare, build, and run the sample applicati
 
 ### The video client SDK integration
 
-The client SDK must be integrated into the sample project before it can be opened and built. 
+This is the code for integrating the client SDK into the sample project.
 
-1. Add it in your root **build.gradle** at the end of repositories.
+1. Add it in your root **setting.gradle** at the end of repositories.
 
     ```gradle
     allprojects {
@@ -73,7 +73,6 @@ The client SDK must be integrated into the sample project before it can be opene
 2. Add the following lines under **dependencies** of your app **build.gradle** file.
 
     ```gradle
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.20"
     implementation 'com.pubnub:pubnub-gson:4.29.2'
     implementation 'com.ringcentral.video:ringcentral-video-sdk:version'
     ```
