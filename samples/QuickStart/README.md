@@ -57,7 +57,7 @@ The following steps show you how to prepare, build, and run the sample applicati
 
 ### The video client SDK integration
 
-This is the code for integrating the client SDK into the sample project.
+This is the reference step for integrating the client SDK into the code in the sample project.
 
 1. Add it in your root **setting.gradle** at the end of repositories.
 
