@@ -16,7 +16,7 @@ With this sample app you can:
 - Android Studio 4.2.+ or IntelliJ IDEA
 - Physical Android device (Phone and Tablet). Simulators are also supported, however, a real device is recommended because of the performance consideration.
   - Android OS version 7.0+
-  - Android SDK version 24+
+  - Android SDK version 26+
 - RingCentral Developer Account (free - https://app.ringcentral.com/signup)
 - Access to [RingCentral Video Documentation](https://ringcentral-ringcentral-video-api-docs.readthedocs-hosted.com/en/latest/) (using password "workasone")
 

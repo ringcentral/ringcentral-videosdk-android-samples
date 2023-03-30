@@ -32,7 +32,7 @@ With the video client SDK you can:
 - Android Studio 4.2.+
 - Physical Android device (Phone and Tablet) (simulator is also supported)
     - Android OS version 7.0+
-    - Android SDK version 24+
+    - Android SDK version 26+
 - RingCentral Developer Account (free - https://app.ringcentral.com/signup)
 - Access to [RingCentral Video Documentation](https://ringcentral-ringcentral-video-api-docs.readthedocs-hosted.com/en/latest/) (using password "workasone")
 
