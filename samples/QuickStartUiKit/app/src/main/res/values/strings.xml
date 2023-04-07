@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">QuickStartUiKit</string>
+    <string name="clientId"></string>
+    <string name="clientSecret"></string>
+    <string name="personalJwt"></string>
+    <string name="userName"></string>
+    <string name="password"></string>
+    <string name="ringcentral_video_auth_token">
+    {
+        \"access_token\": \"\",
+        \"token_type\": \"\",
+        \"expires_in\": ,
+        \"refresh_token\": \"\",
+        \"refresh_token_expires_in\":,
+        \"scope\": \"\",
+        \"owner_id\": \"\",
+        \"endpoint_id\": \"\"
+    }
+    </string>
+    <string name="meeting_id_hint">Meeting ID</string>
+    <string name="meeting_password_hint">Meeting Password</string>
+    <string name="meeting_display_name_hint">Meeting Display Name (guest join only)</string>
+    <string name="meeting_in_progress">Meeting in progress</string>
+    <string name="notification_channel_name">Meeting notification channel</string>
+    <string name="notification_channel_description">Shows indicator notification for a meeting</string>
+    <string name="camera_access_required">Camera access is required to display the camera preview.</string>
+    <string name="ok">OK</string>
+    <string name="camera_unavailable"><![CDATA[<b>Camera could not be opened.</b>\nThis occurs when the camera is not available (for example it is already in use) or if the system has denied access (for example when camera access has been disabled).]]></string>
+    <string name="camera_permission_granted">Camera permission was granted. Starting preview.</string>
+    <string name="camera_permission_denied">Camera permission request was denied.</string>
+
+    <string name="audio_record_unavailable"><b>Audio record could not be opened.</b>\nThis occurs when the audio record is not available (for example it is already in use) or if the system has denied access (for example when audio record access has been disabled).</string>
+    <string name="audio_record_access_required">Audio record access is required to display the audio record preview.</string>
+    <string name="audio_record_permission_not_available">Permission is not available. Requesting audio record permission.</string>
+    <string name="audio_record_permission_available">Audio record permission is available.</string>
+    <string name="audio_record_permission_granted">Audio record permission was granted.</string>
+    <string name="audio_record_permission_denied">Audio record permission request was denied.</string>
+
+</resources>
