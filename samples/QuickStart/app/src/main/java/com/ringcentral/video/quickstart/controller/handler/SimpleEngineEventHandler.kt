@@ -34,10 +34,6 @@ open class SimpleEngineEventHandler : EngineEventHandler() {
         Log.d(TAG, "onAuthorizationError, errorCode = $errorCode")
     }
 
-    override fun onMeetingBridge(info: MeetingBridgeInfo?) {
-        Log.d(TAG, "onMeetingBridge, info = $info")
-    }
-
     companion object {
         private const val TAG = "SimpleEngineEventHandler"
     }

@@ -87,9 +87,6 @@ class MainActivity : PermissionRequestActivity() {
 
         override fun onMeetingSchedule(p0: Long, p1: ScheduleMeetingSettings?) {
         }
-
-        override fun onMeetingBridge(p0: MeetingBridgeInfo?) {
-        }
     }
 
     companion object {
