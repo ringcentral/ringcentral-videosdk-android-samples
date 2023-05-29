@@ -241,10 +241,7 @@ class MeetingDataController : LifecycleOwner {
         override fun onLiveTranscriptionSettingChanged(setting: LiveTranscriptionSetting?) {
         }
 
-        override fun onLiveTranscriptionHistoryChanged(
-            data: ArrayList<LiveTranscriptionData>?,
-            type: LiveTranscriptionUpdateHistoryType?
-        ) {
+        override fun onLiveTranscriptionHistoryChanged(p0: ArrayList<LiveTranscriptionData>?) {
         }
     }
 

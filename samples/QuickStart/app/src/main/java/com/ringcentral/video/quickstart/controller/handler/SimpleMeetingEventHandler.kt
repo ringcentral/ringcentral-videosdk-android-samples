@@ -45,8 +45,7 @@ open class SimpleMeetingEventHandler : MeetingEventHandler() {
     }
 
     override fun onLiveTranscriptionHistoryChanged(
-        data: java.util.ArrayList<LiveTranscriptionData>?,
-        type: LiveTranscriptionUpdateHistoryType?
+        data: java.util.ArrayList<LiveTranscriptionData>?
     ) {
     }
 
