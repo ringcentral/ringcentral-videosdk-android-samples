@@ -88,10 +88,10 @@ This is the reference step for integrating the client SDK into the code in the s
 
 3.  If the line `android.enableJetifier=true` and `android.useAndroidX=true` doesn't exist in the file, you can add it directly at the end. If the line already exists but its value is `false`, you can change it to `true`.
 
-      ```groovy
+   ```groovy
    android.useAndroidX=true
    android.enableJetifier=true
-      ```
+   ```
 
 ### Run the Application
 
