@@ -62,8 +62,8 @@ dependencies {
     implementation 'com.pubnub:pubnub-gson:4.29.2'
     implementation 'com.ringcentral.video:ringcentral-video-sdk-uikit:0.3.0.4'
     implementation 'com.ringcentral.video:ringcentral-video-sdk:0.12.0.1116'
-    implementation "io.github.scwang90:refresh-layout-kernel:2.0.6"
-    implementation "io.github.scwang90:refresh-header-classics:2.0.6"
+    implementation 'io.github.scwang90:refresh-layout-kernel:2.0.6'
+    implementation 'io.github.scwang90:refresh-header-classics:2.0.6'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

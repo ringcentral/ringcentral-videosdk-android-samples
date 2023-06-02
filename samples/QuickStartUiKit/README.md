@@ -82,8 +82,8 @@ This is the reference step for integrating the client SDK into the code in the s
     implementation 'com.squareup.okhttp3:okhttp:4.9.1'
     implementation 'com.ringcentral.video:ringcentral-video-sdk:version'
     implementation 'com.ringcentral.video:ringcentral-video-sdk-uikit:version'
-    implementation "io.github.scwang90:refresh-layout-kernel:2.0.6"
-    implementation "io.github.scwang90:refresh-header-classics:2.0.6"
+    implementation 'io.github.scwang90:refresh-layout-kernel:2.0.6'
+    implementation 'io.github.scwang90:refresh-header-classics:2.0.6'
     ```
 
 3. If the line `android.enableJetifier=true` and `android.useAndroidX=true` doesn't exist in the file, you can add it directly at the end. If the line already exists but its value is `false`, you can change it to `true`.
