@@ -86,12 +86,12 @@ This is the reference step for integrating the client SDK into the code in the s
     implementation "io.github.scwang90:refresh-header-classics:2.0.6"
     ```
 
-3.  If the line `android.enableJetifier=true` and `android.useAndroidX=true` doesn't exist in the file, you can add it directly at the end. If the line already exists but its value is `false`, you can change it to `true`.
-4.      ```gradle
+3. If the line `android.enableJetifier=true` and `android.useAndroidX=true` doesn't exist in the file, you can add it directly at the end. If the line already exists but its value is `false`, you can change it to `true`.
+
+    ```gradle
     android.useAndroidX=true
     android.enableJetifier=true
     ```
-    
 ### Run the Application
 
 Ensure USB debugging is enabled on your device under **Settings > Developer options** and connect the device to your computer.
