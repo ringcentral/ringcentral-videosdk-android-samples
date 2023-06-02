@@ -93,6 +93,7 @@ This is the reference step for integrating the client SDK into the code in the s
    android.enableJetifier=true
    ```
 
+
 ### Run the Application
 
 Ensure USB debugging is enabled on your device under **Settings > Developer options** and connect the device to your computer.
