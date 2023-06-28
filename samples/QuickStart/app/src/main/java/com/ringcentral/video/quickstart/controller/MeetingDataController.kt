@@ -229,6 +229,14 @@ class MeetingDataController : LifecycleOwner {
             super.onActiveVideoUserChanged(participant)
             _activeVideoParticipant.tryEmit(participant.toParticipantUiState())
         }
+
+        override fun onCallOut(p0: String?, p1: Long) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onDeleteDial(p0: Long) {
+            TODO("Not yet implemented")
+        }
     }
 
     inner class MeetingEventHandlerImpl : SimpleMeetingEventHandler() {
