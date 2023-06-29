@@ -12,10 +12,11 @@ class SampleApplication : Application() {
         * Creating the RCV engine instance with the client ID and client secret, the client ID and
         * client secret must be provided when integrating with the RingCentral video client SDK,
         * otherwise, the video service will not work properly.
+        * isShareUsageData, the switch to send important usage data back to RingCentral
         */
         RcvEngine.create(this.applicationContext,
             getString(R.string.clientId),
-            getString(R.string.clientSecret)
+            getString(R.string.clientSecret), false
         )
 
         /*

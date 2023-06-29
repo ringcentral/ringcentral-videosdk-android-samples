@@ -12,6 +12,7 @@
         android:theme="@style/Theme.QuickStartUiKit"
         android:extractNativeLibs="true"
         android:name="com.example.QuickStartUiKit.SampleApplication"
+        tools:replace="android:fullBackupContent"
         tools:targetApi="31">
         <service android:name="com.ringcentral.video.uikit.service.MeetingService"
             android:enabled="true"

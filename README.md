@@ -84,7 +84,7 @@ To start using the Android programmable video client SDK in your applications, y
 5. If you intend to host a meeting or access your extension information, such as the meeting list or the recording list, etc, follow the steps in our [RingCentral Video client SDK Dev Guide](https://ringcentral-ringcentral-video-api-docs.readthedocs-hosted.com/en/latest/client-sdk/authentication/) to procure the RingCentral authorization tokens and invoke the API method as code below.
 
     ```java  
-    RcvEngine.instance().setAuthToken(<#authorization token string#>, true);
+    RcvEngine.instance().setAuthToken(<#authorization token string#>, false);
     ```
 
 6. Next, follow the dev guide and API documentation or the sample projects to build your video application, enjoy programming!
