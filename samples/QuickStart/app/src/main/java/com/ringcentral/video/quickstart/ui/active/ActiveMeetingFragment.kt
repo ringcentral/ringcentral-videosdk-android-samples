@@ -84,6 +84,7 @@ class ActiveMeetingFragment : Fragment() {
                 launch { listenMeetingUiState() }
                 launch { listenLeaveMeetingEvent() }
                 launch { listenLocalVideoChanges() }
+                launch { listenRemoteVideoChanges() }
             }
         }
     }
@@ -162,6 +163,23 @@ class ActiveMeetingFragment : Fragment() {
                     canvasManager?.updateLocalCanvas(binding.localVideoView, it.modelId)
                 }
             }
+    }
+
+    private suspend fun listenRemoteVideoChanges() {
+        viewModel.remoteParticipants.collect {
+            var hasVideo = false
+            for (participant in it) {
+                if(participant.value.isVideoOn) {
+                    hasVideo = true
+                }
+            }
+
+            if(!hasVideo) {
+                binding.activeVideoView.alpha = 0F
+            } else {
+                binding.activeVideoView.alpha = 1F
+            }
+        }
     }
 
     companion object {
