@@ -20,7 +20,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation
 import com.example.QuickStartUiKit.databinding.ActivityMainBinding
 import com.ringcentral.video.*
+import com.ringcentral.video.uikit.CustomLayoutView
 import com.ringcentral.video.uikit.base.PermissionRequestActivity
+import com.ringcentral.video.uikit.controller.handler.SimpleMeetingUserEventHandler
+import com.ringcentral.video.uikit.controller.handler.SimpleVideoEventHandler
 import com.ringcentral.video.uikit.ui.RCVMeetingView
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -28,6 +31,11 @@ import kotlinx.coroutines.launch
 
 class MainActivity : PermissionRequestActivity() {
     private val engineEventHandler = EventHandlerImpl()
+    private val userEventHandler = UserEventHandlerImpl()
+    private val videoEventHandler = VideoEventHandlerImpl()
+    private var customView: CustomLayoutView? = null
+    private var meetingFragment: RCVMeetingView? = null
+    private var curMeetingId: String = ""
 
     override fun onDestroy() {
         super.onDestroy()
@@ -45,17 +53,52 @@ class MainActivity : PermissionRequestActivity() {
         permissionHostLayout = findViewById(R.id.nav_host_fragment)
 
         RcvEngine.instance().registerEventHandler(engineEventHandler)
+
+        customView = CustomLayoutView(this)
     }
+
+    private fun initControllers(meetingId: String) {
+        RcvEngine.instance().getMeetingController(meetingId)?.also {
+            it.meetingUserController?.registerEventHandler(userEventHandler)
+            it.videoController?.registerEventHandler(videoEventHandler)
+        }
+    }
+
     inner class EventHandlerImpl : EngineEventHandler() {
         @SuppressLint("ResourceType")
         override fun onMeetingJoin(meetingId: String?, errorCode: Long) {
             var joinResult = RcvEngine.getErrorType(errorCode)
             when (joinResult) {
                 ErrorCodeType.ERR_OK -> {
+                    if (meetingId.isNullOrEmpty()) {
+                        return
+                    }
+                    curMeetingId = meetingId
+                    initControllers(meetingId)
+
                     val bundle = bundleOf(RCVMeetingView.ARG_MEETING_ID to meetingId)
-                    val navController = Navigation.findNavController(this@MainActivity, R.id.nav_host_fragment)
-                    navController.setGraph(com.ringcentral.video.uikit.R.navigation.meeting_graph, bundle)
-                    //navController.navigate(R.id.action_RCVMeetingView)
+                    //val navController = Navigation.findNavController(this@MainActivity, R.id.nav_host_fragment)
+                    //navController.setGraph(com.ringcentral.video.uikit.R.navigation.meeting_graph, bundle)
+
+                    var transaction = supportFragmentManager.beginTransaction()
+                    if(meetingFragment == null){
+                        var bundle = bundleOf(RCVMeetingView.ARG_MEETING_ID to meetingId)
+                        meetingFragment = RCVMeetingView()
+                        meetingFragment!!.arguments = bundle
+                        customView?.let { it ->
+                            customView!!.setActiveMeetingId(meetingId)
+                            RcvEngine.instance().getMeetingController(meetingId)?.also {meetingController ->
+                                customView!!.updateLocalUser(meetingController.meetingUserController.myself)
+                                customView!!.updateRemoteUser(meetingController.meetingUserController.activeVideoUser)
+                            }
+
+                            meetingFragment!!.setCustomLayoutView(it)
+                        }
+                        transaction.add(R.id.nav_host_fragment, meetingFragment!!)
+                    } else {
+                        transaction.show(meetingFragment!!)
+                    }
+                    transaction.commit()
                 }
                 else -> {
                 }
@@ -66,9 +109,15 @@ class MainActivity : PermissionRequestActivity() {
             var leaveResult = RcvEngine.getErrorType(errorCode)
             when (leaveResult) {
                 ErrorCodeType.ERR_OK -> {
-                    val navController = Navigation.findNavController(this@MainActivity, R.id.nav_host_fragment)
-                    navController.setGraph(R.navigation.nav_graph)
-                    //navController.navigate(R.id.action_MeetingFragment_to_JoinFragment)
+                    //val navController = Navigation.findNavController(this@MainActivity, R.id.nav_host_fragment)
+                    //navController.setGraph(R.navigation.nav_graph)
+
+                    curMeetingId = ""
+                    val transaction = supportFragmentManager.beginTransaction()
+                    meetingFragment?.let {
+                        transaction.hide(it)
+                        transaction.commit()
+                    }
                 }
                 else -> {
                 }
@@ -86,6 +135,58 @@ class MainActivity : PermissionRequestActivity() {
         }
 
         override fun onMeetingSchedule(p0: Long, p1: ScheduleMeetingSettings?) {
+        }
+    }
+
+    inner class UserEventHandlerImpl : SimpleMeetingUserEventHandler() {
+        override fun onUserJoined(participant: IParticipant?) {
+        }
+
+        override fun onUserUpdated(participant: IParticipant?) {
+        }
+
+        override fun onUserLeave(participant: IParticipant?) {
+        }
+
+        override fun onUserRoleChanged(participant: IParticipant?) {
+        }
+
+        override fun onActiveVideoUserChanged(participant: IParticipant?) {
+            if (participant != null) {
+                customView?.updateRemoteUser(participant)
+            }
+        }
+
+        override fun onCallOut(p0: String?, p1: Long) {
+        }
+
+        override fun onDeleteDial(p0: Long) {
+        }
+    }
+
+    inner class VideoEventHandlerImpl : SimpleVideoEventHandler() {
+        override fun onLocalVideoMuteChanged(muted: Boolean) {
+            if (curMeetingId.isEmpty()) {
+                return
+            }
+
+            RcvEngine.instance().getMeetingController(curMeetingId)?.also { it ->
+                customView?.updateLocalUser(it.meetingUserController.myself)
+                customView?.showLocal()
+            }
+        }
+
+        override fun onRemoteVideoMuteChanged(participant: IParticipant?, muted: Boolean) {
+            if (curMeetingId.isEmpty()) {
+                return
+            }
+
+            RcvEngine.instance().getMeetingController(curMeetingId)?.also { it ->
+                if (participant?.modelId == it.meetingUserController.activeVideoUser.modelId) {
+                    customView?.updateRemoteUser(participant)
+                    customView?.showRemote()
+                }
+            }
         }
     }
 

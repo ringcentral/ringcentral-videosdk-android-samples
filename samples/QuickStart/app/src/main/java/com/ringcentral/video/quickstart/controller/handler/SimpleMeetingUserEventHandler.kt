@@ -30,12 +30,12 @@ open class SimpleMeetingUserEventHandler: MeetingUserEventHandler() {
         Log.d(TAG, "onRemoteNetworkQuality, ${participant?.displayName()}, NQI = ${nqi?.name}")
     }
 
-    override fun onCallOut(p0: String?, p1: Long) {
-        TODO("Not yet implemented")
+    override fun onCallOut(id: String?, error_code: Long) {
+        Log.d(TAG, "onCallOut")
     }
 
-    override fun onDeleteDial(p0: Long) {
-        TODO("Not yet implemented")
+    override fun onDeleteDial(error_code: Long) {
+        Log.d(TAG, "onDeleteDial")
     }
 
     override fun onActiveVideoUserChanged(participant: IParticipant?) {

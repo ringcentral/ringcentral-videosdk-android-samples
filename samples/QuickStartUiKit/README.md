@@ -92,7 +92,7 @@ This is the reference step for integrating the client SDK into the code in the s
     android.useAndroidX=true
     android.enableJetifier=true
     ```
-4. Add the following lines under `tools:replace="android:fullBackupContent` of your **AndroidManifest.xml** file.
+4. Locate the `AndroidManifest.xml` file. It is usually found in the `app/src/main` directory of your project. Find the `application`  tag within the manifest file. Add the attribute tools:replace="android:fullBackupContent" to the `application`  tag.  For example:
 
   ```xml
 <application
