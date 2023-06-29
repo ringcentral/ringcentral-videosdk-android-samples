@@ -17,7 +17,7 @@ class SampleApplication: Application() {
         RcvEngine.create(this.applicationContext,
             getString(R.string.clientId),
             getString(R.string.clientSecret),
-            true
+            false
         )
 
         /*
