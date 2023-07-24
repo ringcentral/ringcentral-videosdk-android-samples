@@ -230,12 +230,22 @@ class MeetingDataController : LifecycleOwner {
             _activeVideoParticipant.tryEmit(participant.toParticipantUiState())
         }
 
+        override fun onLocalDialStateChanged(
+            p0: String?,
+            p1: String?,
+            p2: String?,
+            p3: CallPhoneStatus?,
+            p4: Boolean
+        ) {
+
+        }
+
         override fun onCallOut(p0: String?, p1: Long) {
-            TODO("Not yet implemented")
+
         }
 
         override fun onDeleteDial(p0: Long) {
-            TODO("Not yet implemented")
+
         }
     }
 

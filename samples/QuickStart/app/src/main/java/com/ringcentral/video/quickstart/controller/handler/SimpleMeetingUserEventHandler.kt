@@ -1,6 +1,7 @@
 package com.ringcentral.video.quickstart.controller.handler
 
 import android.util.Log
+import com.ringcentral.video.CallPhoneStatus
 import com.ringcentral.video.IParticipant
 import com.ringcentral.video.MeetingUserEventHandler
 import com.ringcentral.video.NqiState
@@ -36,6 +37,16 @@ open class SimpleMeetingUserEventHandler: MeetingUserEventHandler() {
 
     override fun onDeleteDial(error_code: Long) {
         Log.d(TAG, "onDeleteDial")
+    }
+
+    override fun onLocalDialStateChanged(
+        p0: String?,
+        p1: String?,
+        p2: String?,
+        p3: CallPhoneStatus?,
+        p4: Boolean
+    ) {
+        Log.d(TAG, "onLocalDialStateChanged")
     }
 
     override fun onActiveVideoUserChanged(participant: IParticipant?) {
