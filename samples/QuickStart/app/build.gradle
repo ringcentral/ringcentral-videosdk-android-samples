@@ -51,5 +51,5 @@ dependencies {
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
 
     implementation ("com.pubnub:pubnub-gson:4.29.2")
-    implementation ("com.ringcentral.video:ringcentral-video-sdk:0.14.1.1205")
+    implementation ("com.ringcentral.video:ringcentral-video-sdk:0.14.2.1220")
 }
